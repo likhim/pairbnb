@@ -9,9 +9,12 @@
   <%= csrf_meta_tags %>
 </head>
 
+
+<!-- nav bar: redirect to your views accordingly -->
+
 <h1>PairBnB</h1>
 	    <% if signed_in? %>
-      Signed in as: <%= current_user.email %>
+      Signed in as: <%= current_user.name %>
       <%= button_to 'Sign out', sign_out_path, method: :delete %>
     <% else %>
       <%= link_to 'Sign in', sign_in_path %>
