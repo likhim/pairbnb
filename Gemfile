@@ -48,3 +48,5 @@ end
 # Authentication with email & password
 gem 'clearance'
 
+# Protecting privacy
+gem 'figaro'
