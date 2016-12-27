@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   
+  # override clearance 
+  resources :users, only: [:new, :create]
+
+
+  # preset routes by clearance
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
 
@@ -17,6 +22,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
+  # root 'users#new'
   root 'welcome#index'
 
   # Example of regular route:
