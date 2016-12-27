@@ -1,5 +1,9 @@
+require 'byebug'
+
 class User < ActiveRecord::Base
   include Clearance::User
+
+  before_save :create_remember_token
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.(com)/
 
@@ -18,14 +22,20 @@ class User < ActiveRecord::Base
 
 	# 1. creates a user object based on info given by provider
 	def self.create_with_auth_and_hash(authentication, auth_hash)
-		user = Authentication.create(name: auth_hash["name"], email: auth_hash["extra"]["raw_info"]["email"])
+		user = User.create(name: auth_hash["name"], email: auth_hash["extra"]["raw_info"]["email"])
 		user.authentications<<(authentication)
 	end
 
-	# 2: fetch fb_token 
+	# 2. fetch fb_token 
 	def fb_token
 		x = self.authentications.where(:provider => :facebook).first
 		return x.token unless x.nil?
+	end
+
+	# 3. Rememeber token
+	private
+	def create_remember_token
+		self.remember_token = SecureRandom.urlsafe_base64
 	end
 
 end
