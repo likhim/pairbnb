@@ -3,10 +3,6 @@ Rails.application.routes.draw do
   # override clearance 
   resources :users, only: [:new, :create, :edit]
 
-
-  # add callback URL after authentication is done
-  get "/auth/:provider/callback" => "sessions#create_from_omniauth"
-
   # preset routes by clearance
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
@@ -21,12 +17,20 @@ Rails.application.routes.draw do
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
   get "/sign_up" => "clearance/users#new", as: "sign_up"
 
+    # add callback URL after authentication is done
+  get "/auth/:provider/callback" => "sessions#create_from_omniauth"
+
+    # add listing routes
+  resources :listings
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   # root 'users#new'
   root 'listings#index'
+
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
