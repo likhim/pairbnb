@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   
   # override clearance 
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :edit]
 
+
+  # add callback URL after authentication is done
+  get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 
   # preset routes by clearance
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
@@ -23,7 +26,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'users#new'
-  root 'welcome#index'
+  root 'listings#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
