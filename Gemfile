@@ -50,3 +50,7 @@ gem 'clearance'
 
 # Protecting privacy
 gem 'figaro'
+
+# Facebook Login
+gem 'omniauth'
+gem 'omniauth-facebook'

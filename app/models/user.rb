@@ -14,4 +14,18 @@ class User < ActiveRecord::Base
 	has_many :listings
 	has_many :reservations
 
+	has_many :authentications, :dependent => :destroy
+
+	# 1. creates a user object based on info given by provider
+	def self.create_with_auth_and_hash(authentication, auth_hash)
+		user = Authentication.create(name: auth_hash["name"], email: auth_hash["extra"]["raw_info"]["email"])
+		user.authentications<<(authentication)
+	end
+
+	# 2: fetch fb_token 
+	def fb_token
+		x = self.authentications.where(:provider => :facebook).first
+		return x.token unless x.nil?
+	end
+
 end

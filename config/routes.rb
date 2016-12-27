@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   
   # override clearance 
-  resources :users, only: [:new, :create]
+  # resources :users, only: [:new, :create]
 
+  # add callback URL after authentication is done
+  get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 
   # preset routes by clearance
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
