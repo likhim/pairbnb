@@ -3,8 +3,6 @@ require 'byebug'
 class User < ActiveRecord::Base
   include Clearance::User
 
-  # before_save :create_remember_token
-
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.(com)/
 
 	validates :name, presence: true
@@ -40,7 +38,7 @@ class User < ActiveRecord::Base
 		true
 	end
 
-	# 3. Rememeber token
+	# 3. Remember token
 	private
 	def self.create_remember_token
 		 SecureRandom.urlsafe_base64
