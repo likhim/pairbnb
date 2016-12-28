@@ -20,12 +20,13 @@ Rails.application.routes.draw do
     # add callback URL after authentication is done
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 
+resources :listings 
     # add listing routes
     # since create reservation is within listings' parameter, add create reservation routes in listing routes
   resources :listings do
     resources :reservations, only: [:create]
   end
-
+  
     # add reservation routes
   resources :reservations, only: [:destroy]
 
