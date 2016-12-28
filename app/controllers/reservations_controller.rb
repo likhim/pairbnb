@@ -14,7 +14,7 @@ class ReservationsController < ApplicationController
 	end
 
 	def reservation_params
-		params.require(:booking).permit(:num_guests, :checkin_date, :checkout_date)
+		params.require(:reservation).permit(:num_guests, :checkin_date, :checkout_date)
 	end
 
 end

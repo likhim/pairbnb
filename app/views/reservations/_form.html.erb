@@ -1,4 +1,6 @@
-<%= form_for @reservation do |form| %>
+<!-- since create reservation is within listing form. do th ebelow form for method -->
+
+<%= form_for [@listing, @reservation] do |form| %>
   <div>
     <%= form.label :num_guests %>
     <%= form.number_field :num_guests %>
