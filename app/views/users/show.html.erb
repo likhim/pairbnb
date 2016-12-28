@@ -1,1 +1,6 @@
-<h1>Email: <%= @user.email %> </h1>
+<h1> Profile </h1>
+<p>Email: <%= @user.email %> </p>
+<p>Name: <%= @user.name %> </p>
+<p>D.O.B: <%= @user.dob %> </p>
+<!-- create an edit button based on your override resources in routes.rb-->
+<%= link_to "Edit", edit_user_path(@user) %>

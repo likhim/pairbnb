@@ -38,9 +38,9 @@ class UsersController < ApplicationController
 	def update
 		if @user.update(user_params)
 			flash[:success] = "Update profile successful"
-			redirect_to @user #user_path
+			redirect_to @user #@user is user_path @user.id?
 		else
-			flash[:danger] = "Error: Updating user incomplete"
+			flash[:danger] = "Error in updating user"
 			render :edit
 		end
 	end
