@@ -8,6 +8,9 @@
 
 require 'faker'
 
+	# User.create(name: "likhim", email: "likhimsiow@yahoo.com", password: "slk273", gender: "2", phone_num:"123456789", dob: Faker::Date.between(25.years.ago, Date.today), role: 0)
+	# Listing.create(user_id: 16, title: Faker::Color.color_name + " house", description: "abc", max_guests: rand(1...7), price: rand(50...200))
+
 10.times do 
 	User.create(
 		name: Faker::Name.name, 
