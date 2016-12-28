@@ -3,8 +3,9 @@ class ListingsController < ApplicationController
 	before_action :find_listing, only: [:show, :edit, :update]
 
 	def index
-		@listings = Listing.all
+		@listings = Listing.all.order(:title).page params[:page]
 	end
+	# reference on order: http://api.rubyonrails.org/classes/ActiveRecord/QueryMethods.html#method-i-order
 
 	def new
 		@listing = Listing.new
