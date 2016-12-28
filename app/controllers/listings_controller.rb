@@ -11,6 +11,7 @@ class ListingsController < ApplicationController
 	end
 
 	def create
+		#push current_user id into listings table
 		@listing = current_user.listings.new(listing_params)
 		if @listing.save
 			redirect_to listings_path
@@ -19,6 +20,9 @@ class ListingsController < ApplicationController
 
 	def show
 		# @listing = Listing.find(params[:id])
+
+		#push @listing info (eg:listing id + current_user id) into reservations table
+		@reservation = @listing.reservations.new
 	end
 
 	def edit

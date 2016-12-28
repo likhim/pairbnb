@@ -21,7 +21,14 @@ Rails.application.routes.draw do
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 
     # add listing routes
-  resources :listings
+    # since create reservation is within listings' parameter, add create reservation routes in listing routes
+  resources :listings do
+    resources :reservations, only: [:create]
+  end
+
+    # add reservation routes
+  resources :reservations, only: [:destroy]
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,0 +1,23 @@
+<!-- since create reservation is within listing form. do th ebelow form for method -->
+
+<%= form_for [@listing, @reservation] do |form| %>
+  <div>
+    <%= form.label :num_guests %>
+    <%= form.number_field :num_guests %>
+  </div>
+
+  <div>
+    <%= form.label :checkin_date %>
+    <%= form.date_field :checkin_date %>
+  </div>
+
+  <div>
+    <%= form.label :checkout_date %>
+    <%= form.date_field :checkout_date %>
+  </div>
+
+  <div>
+    <%= form.submit "Submit booking" %>
+  </div>
+
+<% end %>
