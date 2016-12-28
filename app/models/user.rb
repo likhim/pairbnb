@@ -2,6 +2,7 @@ require 'byebug'
 
 class User < ActiveRecord::Base
   include Clearance::User
+  enum role: { superadmin: 0, moderator: 1, customer: 2 }
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.(com)/
 
