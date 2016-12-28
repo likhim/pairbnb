@@ -54,3 +54,6 @@ gem 'figaro'
 # Facebook Login
 gem 'omniauth'
 gem 'omniauth-facebook'
+
+# Pagination
+gem 'kaminari'
