@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
   # override clearance 
-  resources :users, only: [:new, :create, :edit]
+  resources :users, only: [:new, :create, :edit, :update]
 
   # preset routes by clearance
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
