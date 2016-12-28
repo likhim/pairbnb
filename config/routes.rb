@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
   # override clearance 
-  resources :users, only: [:new, :create, :edit, :update]
+  resources :users, only: [:index, :new, :create, :edit, :update, :show]
 
   # preset routes by clearance
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
@@ -35,10 +35,8 @@ resources :listings
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'users#new'
-  root 'listings#index'
-
-
+  root "users#index"
+  # root 'listings#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

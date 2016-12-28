@@ -4,6 +4,9 @@ class Reservation < ActiveRecord::Base
 
   validate :check_overlapping_dates
   validate :check_max_guests
+  #validate num_guest is not -ve
+  #validate start_date should be after today
+
 
   def check_overlapping_dates
   	#check if new bookings overlapped with any existing bookings 
