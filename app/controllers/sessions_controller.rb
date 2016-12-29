@@ -1,5 +1,3 @@
-require 'byebug'
-
 class SessionsController < Clearance::SessionsController
 
 	def create_from_omniauth
