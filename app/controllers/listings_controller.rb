@@ -20,8 +20,6 @@ class ListingsController < ApplicationController
 	end
 
 	def show
-		# @listing = Listing.find(params[:id])
-
 		#push @listing info (eg:listing id + current_user id) into reservations table
 		@reservation = @listing.reservations.new
 	end

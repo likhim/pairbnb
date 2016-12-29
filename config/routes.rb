@@ -20,7 +20,6 @@ Rails.application.routes.draw do
     # add callback URL after authentication is done
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 
-resources :listings 
     # add listing routes
     # since create reservation is within listings' parameter, add create reservation routes in listing routes
   resources :listings do
@@ -35,8 +34,7 @@ resources :listings
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root "users#index"
-  # root 'listings#index'
+  root 'listings#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
