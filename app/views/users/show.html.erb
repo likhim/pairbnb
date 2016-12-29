@@ -1,4 +1,9 @@
 <h1> Profile </h1>
+
+<div>
+	<%= image_tag @user.avatar.thumbuser.url %>
+</div>
+
 <p>Email: <%= @user.email %> </p>
 <p>Name: <%= @user.name %> </p>
 <p>D.O.B: <%= @user.dob %> </p>
