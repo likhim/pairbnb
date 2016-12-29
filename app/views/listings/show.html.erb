@@ -1,9 +1,12 @@
 <h1>Title: <%= @listing.title%></h1>
 
 <div>
-	Posted by:<%= @listing.user.email%>
+	<% @listing.avatars.each do |x| %>
+	<%= image_tag x.thumblisting.url %>
+	<% end %>
 </div>
 
+<p>Posted by:<%= @listing.user.email%></p>
 <p>Description: <%= @listing.description %></p>
 <p>Max Guests: <%= @listing.max_guests %></p>
 <p>Price per night: <%= @listing.price %></p>

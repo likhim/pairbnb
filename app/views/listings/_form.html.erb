@@ -20,6 +20,11 @@
   </div>
 
   <div>
+    <%= form.label :avatars %>
+    <%= form.file_field :avatars, multiple: true %>
+  </div>
+
+  <div>
     <%= form.submit "Submit" %>
   </div>
 
