@@ -61,3 +61,7 @@ gem 'omniauth-facebook'
 gem 'kaminari'
 
 gem 'faker'
+
+# Image uploading
+gem 'carrierwave'
+gem	'mini_magick'
