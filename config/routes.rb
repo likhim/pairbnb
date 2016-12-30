@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   
   # override clearance 
-  resources :users, only: [:index, :new, :create, :edit, :update, :show]
+  resources :users, only: [:index, :new, :create, :edit, :update, :show] 
+   get "/users/:id/own_listings", :to => "users#own_listings", as: "user_own_listings"
 
   # preset routes by clearance
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]

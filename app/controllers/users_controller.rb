@@ -34,14 +34,13 @@ class UsersController < ApplicationController
 		end
 	end
 
-	private #to not make user_from_params a method
-
-	def user_from_params
-		params.require(:user).permit(:name, :email, :password, :gender, :phone_num, :dob)
+	#show own listing
+	def own_listings
+		@listing = Listing.where(user_id: params[:id])
 	end
 
 
-	#DRY:find_user params
+	#DRY: find_user params
 	before_action :find_user, only: [:show, :edit, :update]
 	def index
 		@users = User.all
@@ -68,6 +67,12 @@ class UsersController < ApplicationController
 
 	def find_user
 		@user = User.find(params[:id])
+	end
+
+	private #to not make the below a method
+
+	def user_from_params
+		params.require(:user).permit(:name, :email, :password, :gender, :phone_num, :dob)
 	end
 
 	def user_params
