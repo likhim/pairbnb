@@ -34,12 +34,6 @@ class UsersController < ApplicationController
 		end
 	end
 
-	#show own listing
-	def own_listings
-		@listing = Listing.where(user_id: params[:id])
-	end
-
-
 	#DRY: find_user params
 	before_action :find_user, only: [:show, :edit, :update]
 	def index

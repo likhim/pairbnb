@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
   
-  # override clearance 
-  resources :users, only: [:index, :new, :create, :edit, :update, :show] 
-   get "/users/:id/own_listings", :to => "users#own_listings", as: "user_own_listings"
+  # override clearance for user
+  resources :users, only: [:index, :new, :create, :edit, :update, :show] do
+    resources :listings, only: [:edit, :update, :destroy, :show, :new, :own_listings]
+  end
 
-  # preset routes by clearance
+  get "/users/:user_id/listings" => "listings#own_listings", as: "user_own_listings"
+  
+  # clearance routes
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
 
@@ -18,7 +21,7 @@ Rails.application.routes.draw do
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
   get "/sign_up" => "clearance/users#new", as: "sign_up"
 
-    # add callback URL after authentication is done
+      # add callback URL after authentication is done
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 
     # add listing routes
@@ -35,7 +38,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'listings#index'
+  root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

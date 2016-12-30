@@ -8,6 +8,11 @@ class ListingsController < ApplicationController
 	end
 	# reference on order: http://api.rubyonrails.org/classes/ActiveRecord/QueryMethods.html#method-i-order
 
+		#show own listing
+	def own_listings
+		@listing = Listing.where(user_id: params[:user_id])
+	end
+
 	def new
 		@listing = Listing.new
 	end
