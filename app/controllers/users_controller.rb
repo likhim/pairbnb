@@ -21,6 +21,26 @@
 # end
 
 class UsersController < ApplicationController
+
+	def create
+		@user = User.new(user_from_params)
+		if @user.save
+			sign_in @user
+			redirect_to user_path(current_user)
+			# redirect_back_or url_after_create
+		else
+			flash[:unsuccessful] = "Please complete all fields"
+			render template: "users/new"
+		end
+	end
+
+	private #to not make user_from_params a method
+
+	def user_from_params
+		params.require(:user).permit(:name, :email, :password, :gender, :phone_num, :dob)
+	end
+
+
 	#DRY:find_user params
 	before_action :find_user, only: [:show, :edit, :update]
 	def index
