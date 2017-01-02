@@ -9,7 +9,7 @@ class SessionsController < Clearance::SessionsController
 		if authentication.user
 			user = authentication.user
 			authentication.update_token(auth_hash)
-			@next = root_url #change to listing/index
+			@next = root_url
 			@notice = "Signed In!"
 		else
 			user = User.create_with_auth_and_hash(authentication, auth_hash)
