@@ -1,0 +1,18 @@
+<% @listing.each do |i| %>
+
+	<h1>Title: <%= i.title%></h1>
+
+	<div>
+		<% i.avatars.each do |x| %>
+		<%= image_tag x.thumb.url %>
+		<% end %>
+	</div>
+
+	<p>Posted by:<%= i.user.email%></p>
+	<p>Description: <%= i.description %></p>
+	<p>Max Guests: <%= i.max_guests %></p>
+	<p>Price per night: <%= i.price %></p>
+	<%= link_to "Edit", edit_listing_path(i)%>
+
+<% end %>
+
