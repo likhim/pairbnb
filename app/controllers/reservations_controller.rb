@@ -2,6 +2,8 @@ require 'byebug'
 
 class ReservationsController < ApplicationController
 
+before_action :find_reservation, only: [:show, :edit, :update]
+
 	def create
 		#find listing id
 		@listing = Listing.find(params[:listing_id]) 
@@ -18,7 +20,22 @@ class ReservationsController < ApplicationController
 		end
 	end
 
+	def own_reservations
+		@reservations = Reservation.where(user_id: params[:user_id])
+	end
+
+	def show
+		@reservations = Reservation.where(user_id: params[:user_id])
+	end
+
+	def update
+	end
+
 	def destroy
+	end
+
+	def find_reservation
+		@reservation = Reservation.find(params[:id])
 	end
 
 	def reservation_params

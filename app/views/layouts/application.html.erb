@@ -21,7 +21,7 @@
       <%= link_to 'User Profile', user_path(current_user) %>
       <%= link_to 'Home', root_path %>
       <%= link_to 'MyListings', user_own_listings_path(current_user) %>
-      <%= link_to 'MyBookings' %>
+      <%= link_to 'MyBookings', user_own_reservations_path(current_user) %>
       <%= button_to 'Sign Out', sign_out_path, method: :delete %>
     <% else %>
       <%= link_to 'Log In', sign_in_path %>
