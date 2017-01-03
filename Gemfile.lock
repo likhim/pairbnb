@@ -333,6 +333,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   kaminari
+  mail
   mini_magick
   omniauth
   omniauth-facebook

@@ -5,15 +5,16 @@ class ReservationsController < ApplicationController
 before_action :find_reservation, only: [:show, :edit, :update]
 
 	def create
-		#find listing id
+		#find listing_id
 		@listing = Listing.find(params[:listing_id]) 
 		#insert current_user id into @reservation for saving
 		@reservation = current_user.reservations.new(reservation_params)
 		#reservation belongs to this 1 listing at that moment in time which is your @listing
 		@reservation.listing = @listing
 		if @reservation.save
-			redirect_to current_user
-			# redirect_to @listings
+			#send mailer to host once customer made a booking
+			ReservationMailer.booking_email(@reservation.user, @listing.user, @reservation.id).deliver_now #send email after save
+			redirect_to current_user #or redirect_to @listings
 		else
 			@errors = @reservation.errors.full_messages
 			render "listings/show"
