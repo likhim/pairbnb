@@ -33,6 +33,9 @@ class ListingsController < ApplicationController
 	def edit
 	end
 
+	def destroy
+	end
+
 	def update
 		if @listing.update(listing_params)
 			flash[:success] = "Successfully updated listing"

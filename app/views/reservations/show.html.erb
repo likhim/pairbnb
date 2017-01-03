@@ -1,0 +1,11 @@
+<h1>Booking Details</h1>
+
+<p>Title <%= @reservations.listing.title%></p>
+<p>Period: <%= @reservations.checkin_date %> - <%= @reservations.checkout_date %> </p>
+<p>No. of nights </p>
+<p>No. of Guest: <%= @reservations.num_guests %></p>
+<p>Description: <%= @reservations.listing.description %></p>
+<p>Price per night: <%= @reservations.listing.price %> </p>
+<p>Total: </p>
+
+<% end %>

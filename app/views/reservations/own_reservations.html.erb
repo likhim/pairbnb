@@ -1,0 +1,10 @@
+<h1>Your Bookings History</h1>
+
+<% @reservations.each do |r| %>
+
+<p>Title: <%= r.listing.title%></p>
+<p><%= r.checkin_date %> - <%== r.checkout_date %> . <%= r.num_guests %> guests </p>
+<p><%= r.listing.description %> </p>
+link_to "See Booking Details", user_reservation_path(r)
+<% end %>
+

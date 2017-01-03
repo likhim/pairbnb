@@ -3,10 +3,12 @@ Rails.application.routes.draw do
   # override clearance for user
   resources :users, only: [:index, :new, :create, :edit, :update, :show] do
     resources :listings, only: [:edit, :update, :destroy, :show, :new, :own_listings]
+    resources :reservations, only: [:edit, :update, :destroy, :show, :new, :own_reservations]
   end
 
   get "/users/:user_id/listings" => "listings#own_listings", as: "user_own_listings"
-  
+  get "/users/:user_id/reservations" => "reservations#own_reservations", as: "user_own_reservations"
+
   # clearance routes
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
