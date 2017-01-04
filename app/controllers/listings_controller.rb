@@ -5,6 +5,7 @@ class ListingsController < ApplicationController
 	def index
 		@listings = Listing.all.order(:title).page params[:page]
 		# @listings = Listing.where(user_id: params[:id]).order(:title).page params[:page]
+		@search = Listing.filter(params.slice(:price, :max_guests, :starts_with))
 	end
 	# reference on order: http://api.rubyonrails.org/classes/ActiveRecord/QueryMethods.html#method-i-order
 
@@ -53,4 +54,5 @@ class ListingsController < ApplicationController
 	def listing_params
 		params.require(:listing).permit(:title, :description, :max_guests, :price, {avatars: []})
 	end
+
 end
