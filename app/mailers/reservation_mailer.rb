@@ -9,5 +9,4 @@ class ReservationMailer < ApplicationMailer
 		@url = "http://google.com" #to change
 		mail(to: @host.email, subject: 'New Reservation')
 	end
-
 end
