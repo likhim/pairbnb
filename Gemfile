@@ -69,3 +69,4 @@ gem 'fog'
 
 # Mailers
 gem 'mail'
+gem 'sidekiq'
