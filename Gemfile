@@ -68,5 +68,5 @@ gem 'fog'
 # Mailers
 gem 'mail'
 gem 'sidekiq'
-gem 'resque'
-gem 'resque-scheduler'
+# gem 'resque'
+# gem 'resque-scheduler'
