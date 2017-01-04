@@ -12,8 +12,10 @@ before_action :find_reservation, only: [:show, :edit, :update]
 		#reservation belongs to this 1 listing at that moment in time which is your @listing
 		@reservation.listing = @listing
 		if @reservation.save
-			#send mailer to host once customer made a booking
-			ReservationMailer.booking_email(@reservation.user, @listing.user, @reservation.id).deliver_now #send email after save
+			# invoke Job by calling the method .perform then _later is to perform once queue is free
+			# ReservationJob.perform_later(@reservation.user, @listing.user, @reservation.id)
+			ReservationMailer.booking_email(@reservation.user, @listing.user, @reservation.id).deliver_now
+			# ReservationMailer will be invoke in Job - To send mailer to host once booking is saved
 			redirect_to current_user #or redirect_to @listings
 		else
 			@errors = @reservation.errors.full_messages
