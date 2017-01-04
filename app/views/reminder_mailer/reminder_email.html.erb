@@ -4,7 +4,7 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>New Reservation from <%= @customer.user.name %></h1>
+    <h1>Reminder: <%= @customer.user.name %> is staying over on <%= @customer.checkin_date %> </h1>
     <p>
       You can see details of your new reservation here: <%= @url %>
     </p>

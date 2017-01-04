@@ -8,7 +8,5 @@ class ReservationMailer < ApplicationMailer
 		@reservation_id = reservation_id
 		@url = "http://google.com" #to change
 		mail(to: @host.email, subject: 'New Reservation')
-		# need tto specify timing if use deliver_later here?
 	end
-
 end
