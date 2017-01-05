@@ -10,3 +10,4 @@ class ReservationMailer < ApplicationMailer
 		mail(to: @host.email, subject: 'New Reservation')
 	end
 end
+

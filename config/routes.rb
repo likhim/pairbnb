@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   # override clearance for user
   resources :users, only: [:index, :new, :create, :edit, :update, :show] do
-    resources :listings, only: [:edit, :update, :destroy, :show, :new, :own_listings]
+    resources :listings, only: [:edit, :update, :destroy, :show, :new, :own_listings, :create]
     resources :reservations, only: [:edit, :update, :destroy, :show, :new, :own_reservations]
   end
 
@@ -35,6 +35,8 @@ Rails.application.routes.draw do
     # add reservation routes
   resources :reservations, only: [:destroy]
 
+    # add search routes
+  resources :search, only: [:index]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

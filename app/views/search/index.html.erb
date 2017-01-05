@@ -1,8 +1,7 @@
-<h1>Listings Around the World</h1>
+<h1> <%= @search.count %> search(es) found</h1>
+<h3> for price at <%= params[:listing][:price] %> with max guests of <%= params[:listing][:max_guests] %></h3>
 
-<%= link_to "Create New Listing", new_listing_path %>
-
-<h4>Looking for something more specific?</h4>
+<h4>Search again?</h4>
 <%= form_for(:listing, url: search_index_path, method: :get) do |form| %>
   <div>
   	<%= form.label :price %>
@@ -18,13 +17,10 @@
 
 
 <table>
-<% @listings.each do |listing| %>
+<% @search.each do |result| %>
 	<tr>
-		<td><%= link_to listing.title, listing %></td>
+		<td><%= link_to result.title, result %></td>
 	</tr>
 <% end %>
-<%= paginate @listings %>
+<%= paginate @results %>
 </table>
-
-
-

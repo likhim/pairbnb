@@ -18,8 +18,8 @@
 <h1>PairBnB</h1>
 	    <% if signed_in? %>
       Signed in as: <%= current_user.name %> Role: <%=current_user.role %> <br>
-      <%= link_to 'User Profile', user_path(current_user) %>
       <%= link_to 'Home', root_path %>
+      <%= link_to 'User Profile', user_path(current_user) %>
       <%= link_to 'MyListings', user_own_listings_path(current_user) %>
       <%= link_to 'MyBookings', user_own_reservations_path(current_user) %>
       <%= button_to 'Sign Out', sign_out_path, method: :delete %>

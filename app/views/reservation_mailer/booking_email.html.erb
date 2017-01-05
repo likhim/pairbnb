@@ -6,8 +6,10 @@
   <body>
     <h1>New Reservation from <%= @customer.user.name %></h1>
     <p>
+      <%= @customer.user.name %> has booked from <%= @customer.checkin_date %> to <%= @customer.checkout_date %> <br>
       You can see details of your new reservation here: <%= @url %>
     </p>
      <p>Cheers- PairBnB team!</p>
   </body>
 </html>
+
