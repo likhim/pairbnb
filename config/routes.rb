@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   # override clearance for user
   resources :users, only: [:index, :new, :create, :edit, :update, :show] do
-    resources :listings, only: [:edit, :update, :destroy, :show, :new, :own_listings]
+    resources :listings, only: [:edit, :update, :destroy, :show, :new, :own_listings, :create]
     resources :reservations, only: [:edit, :update, :destroy, :show, :new, :own_reservations]
   end
 

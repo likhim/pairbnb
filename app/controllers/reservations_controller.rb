@@ -15,7 +15,10 @@ before_action :find_reservation, only: [:show, :edit, :update]
 			# invoke Job by calling the method .perform then _later is to perform once queue is free
 			ReservationJob.perform_later(@reservation, @listing.user, @reservation.id)
 			# ReservationMailer will be invoked in Job - To send mailer to host once booking is saved
+
+			# Then send 2nd email to remind host on the reservation
 			ReminderJob.perform_later(@reservation, @listing.user, @reservation.id)
+			
 			redirect_to current_user #or redirect_to @listings
 		else
 			@errors = @reservation.errors.full_messages
