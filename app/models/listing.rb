@@ -8,4 +8,6 @@ include Filterable
   scope :price, -> (price) { where price: price }
   scope :max_guests, -> (max_guests) { where max_guests: max_guests}
   scope :starts_with, -> (title) { where("title like ?", "#{title}%")}
+   
+  
 end
