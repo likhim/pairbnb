@@ -2,6 +2,20 @@
 
 <%= link_to "Create New Listing", new_listing_path %>
 
+<%= form_for(:@search, method: :get) do |form| %>
+  <div>
+  	<%= form.label :price %>
+  	<%= form.number_field :price %>
+  </div>
+
+  <div>
+    <%= form.label :max_guests %>
+    <%= form.number_field :max_guest %>
+  </div>
+  <%= form.submit "Search" %>
+<% end %>
+
+
 <table>
 <% @listings.each do |listing| %>
 	<tr>
